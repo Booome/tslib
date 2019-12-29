@@ -946,8 +946,13 @@ int main(int argc, char **argv)
 			snprintf(&buf[strlen(SYS_INPUT_DIR)], sizeof(name), "%s", name);
 			fprintf(stdout, "created %s\n", buf);
 			devnode = fetch_device_node(buf);
-			if (devnode)
+			if (devnode) {
 				fprintf(stdout, "%s\n", devnode);
+				snprintf(buf, sizeof(buf), "/dev/input/%s", data.uinput_name);
+				remove(buf);
+				if (!symlink(devnode, buf))
+					fprintf(stdout, "linked %s to %s\n", devnode, buf);
+			}
 		}
 	}
 
