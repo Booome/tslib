@@ -242,7 +242,7 @@ static int check_fd(struct tslib_input *i)
 		if (!libevdev_has_event_code(i->evdev, EV_ABS, ABS_MT_PRESSURE))
 			i->no_pressure = 1;
 		else
-			i->no_pressure = 0;
+			i->no_pressure = 1;
 	}
 
 #ifdef DEBUG

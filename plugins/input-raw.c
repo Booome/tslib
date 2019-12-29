@@ -293,7 +293,7 @@ static int check_fd(struct tslib_input *i)
 		if (!(absbit[BIT_WORD(ABS_MT_PRESSURE)] & BIT_MASK(ABS_MT_PRESSURE)))
 			i->no_pressure = 1;
 		else
-			i->no_pressure = 0;
+			i->no_pressure = 1;
 	}
 #ifdef DEBUG
 	if (i->no_pressure) {
